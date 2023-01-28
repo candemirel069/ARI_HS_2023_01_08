@@ -9,10 +9,11 @@ namespace WebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var constr = builder.Configuration.GetConnectionString("ConSqlServer");
+            var constr = builder.Configuration.GetConnectionString("ConSqlite");
             builder.Services.AddDbContext<UrunContext>(
-                options=>options.UseSqlServer(constr));
 
+                options => options.UseSqlite(constr));
+                //options => options.UseSqlServer(constr));
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
